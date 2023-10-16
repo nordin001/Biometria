@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Datos de Sensores</title>
+
+    <style>
+        body{
+            background-color: rgb(226, 17, 9);
+        }
+        table thead {
+            background:#00fe19;
+            color:white;
+            
+        }
+        table thead tr th{
+            
+            padding: 50px;
+
+        }
+        tr td{
+            font-size: large;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th >MEDICION 1(Major)</th>
+                <th >MEDICION 2(Minor)</th>
+                <th >LATITUD</th>
+                <th >LONGITUD</th>
+            </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+    </div>
+
+<script>
+    let url = 'http://192.168.0.18/Proyecto_Biometria/src/api/v1.0/index.php';
+    fetch(url)
+        .then( response => response.json() )//.then( response => response.json() )
+        .then( data => mostrarData(data) )
+        .catch( error => console.log(error) )
+
+    const mostrarData = (data) => {//mostramos los datos que tenemos
+        console.log(data)
+        let body = ""
+        for (var i = 0; i < data.length; i++) {
+            body+=`<tr><td>${data[i].Medicion}</td><td>${data[i].TipoSensor}</td><td>${data[i].Latitud}</td><td>${data[i].Longitud}</td></tr>`
+        }
+        document.getElementById('data').innerHTML = body
+        
+    }
+</script>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
